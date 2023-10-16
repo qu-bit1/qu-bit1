@@ -3,7 +3,6 @@
 
 <br>
 <br>
-<br>
 
 - 👋 Hallo, ich bin @qu-bit1
 - 👀 Ich interessiere mich für maschinelles Lernen und seine Anwendungen.
@@ -11,6 +10,7 @@
 - 🌱 Ich mache auch grundlegende Webentwicklung.
 - 👾 In meiner Freizeit spiele ich gerne CTFs, während ich große Mengen Koffein konsumiere, was mich immun gegen Koffein selbst gemacht hat.
 - 📫 So erreichen Sie mich: E-Mail - sagara22@iitk.ac.in, Discord - qu.bit
+<br>
 
 (PS: Ich bin in keiner Weise Deutsch)
 <!---
