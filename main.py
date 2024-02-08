@@ -84,7 +84,7 @@ def main():
     t.clear_frame()
     top_languages = [lang[0] for lang in git_user_details.languages_sorted]
     user_details_lines = f"""
-    \x1b[30;101qubit@GitHub\x1b[0m
+    \x1b[30;101mqubit@GitHub\x1b[0m
     --------------
     \x1b[96mOS:     \x1b[93mArch Linux, OSX\x1b[0m
     \x1b[96mHost:   \x1b[93mIIT Kanpur \x1b[94m#IITK\x1b[0m
@@ -166,7 +166,7 @@ def main():
     <img alt="GIFOS" src="{image.url}">
 </picture>
 
-<sub><i>inspired from [x0rzavi/github-readme-terminal](https://github.com/x0rzavi/github-readme-terminal) on {time_now}</i></sub>
+<sub><i>inspired from [x0rzavi/github-readme-terminal](https://github.com/x0rzavi/github-readme-terminal)</i></sub>
 
 </div>
 
