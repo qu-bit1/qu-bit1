@@ -1,6 +1,6 @@
 <div align="justify">
 <video autoplay loop muted playsinline>
-    <source src="output.gif" type="image/gif">
+    <source src="./output.gif" type="image/gif">
     Your browser does not support the video tag.
 </video>
 
