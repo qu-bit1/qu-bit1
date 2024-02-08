@@ -1,0 +1,45 @@
+name: Generate and Update GIF
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs every day at midnight UTC
+
+jobs:
+  generate-gif:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install github-readme-terminal  # Add command to install dependencies
+
+      - name: Run Code to Generate GIF
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Run your script to generate the GIF
+          # Replace the command below with the actual command to generate the GIF
+          python main.py
+        # Add additional setup as needed, like setting up a virtual environment and installing dependencies
+
+      - name: Update README
+        run: |
+          # Replace "image-url" with the URL of the generated GIF
+          echo "![update](./output.gif)" > README.md
+        # Add additional setup as needed, like replacing existing GIF URLs
+
+      - name: Commit and Push Changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Update GIF"
+          commit_user_name: "GitHub Actions"
+          commit_user_email: "actions@github.com"
+          repository: .
+
