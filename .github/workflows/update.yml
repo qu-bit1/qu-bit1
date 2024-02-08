@@ -2,8 +2,7 @@ name: Generate and Update GIF
 
 on:
   schedule:
-    - cron: '0 0 * * *' # Runs every day at midnight UTC
-
+    - cron: '5 20 * * *'
 jobs:
   generate-gif:
     runs-on: ubuntu-latest
