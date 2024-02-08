@@ -1,44 +1,40 @@
-name: Generate and Update GIF
+name: Update readme
 
 on:
+  workflow_dispatch:
   schedule:
-    - cron: '5 20 * * *'
+    - cron: '25 20 * * *'
+
+permissions:
+  contents: write
+
 jobs:
-  generate-gif:
+  update-readme:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
+      - uses: actions/checkout@v4
         with:
-          python-version: '3.x'
+          lfs: true
+      # - name: Set up Python 3.11
+      #   uses: actions/setup-python@v5
+      #   with:
+      #     python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install github-readme-terminal  # Add command to install dependencies
+        run: |
+          sudo apt update && sudo apt install -y ffmpeg
+          python -m pip install --upgrade pip
+          pip install github-readme-terminal
 
-      - name: Run Code to Generate GIF
+      - name: Run script
+        run: python main.py
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          IMGBB_API_KEY: ${{ secrets.IMGBB_API_KEY }}
+          GIFOS_GENERAL_COLOR_SCHEME: "yoru"
+
+      - name: Update readme
         run: |
-          # Run your script to generate the GIF
-          # Replace the command below with the actual command to generate the GIF
-          python main.py
-        # Add additional setup as needed, like setting up a virtual environment and installing dependencies
-
-      - name: Update README
-        run: |
-          # Replace "image-url" with the URL of the generated GIF
-          echo "![update](./output.gif)" > README.md
-        # Add additional setup as needed, like replacing existing GIF URLs
-
-      - name: Commit and Push Changes
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: "Update GIF"
-          commit_user_name: "GitHub Actions"
-          commit_user_email: "actions@github.com"
-          repository: .
-
+          git add README.md
+          git -c "user.name=bot" -c "user.email=bot@github.com" commit -m "Automatically updated on $(TZ='Asia/Kolkata' date)"
+          git push
