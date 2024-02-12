@@ -1,3 +1,5 @@
+## How to run
+
 - clone my repo(DO THIS) or write your own `main.py` and get all the fonts present inside the `gifos` directory
 - get your github api token (to fetch github stats) & IMGBB token(for gif handling)
 - create a `.env` file inside your project directory(DON'T PUSH THIS FILE NEVER EVER OR YOU'LL DIE), with your tokens : 
